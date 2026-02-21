@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "url": "/category/laptops",
+    "slogan": "Beyond Reality. Gaming Without Any Compromise.",
+    "imgUrl": "/assets/banner01.png"
+  },
+  {
+    "id": 2,
+    "url": "/category/phones",
+    "slogan": "Future Unfolds. Double Productivity and Style.",
+    "imgUrl": "/assets/banner02.png"
+  },
+  {
+    "id": 3,
+    "url": "/category/pcs",
+    "slogan": "Cooler. Brighter. Faster. Build Your Masterpiece.",
+    "imgUrl": "/assets/banner03.png"
+  }
+]
