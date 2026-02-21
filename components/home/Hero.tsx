@@ -7,7 +7,7 @@ import React, {
 } from 'react'
 import useEmblaCarousel from 'embla-carousel-react'
 import Autoplay from 'embla-carousel-autoplay'
-import { EmblaCarouselType, EmblaOptionsType } from 'embla-carousel'
+import { EmblaCarouselType } from 'embla-carousel'
 import Image from 'next/image'
 
 export default function Hero({slides}: {slides: Array<{id: number, url: string, slogan: string, imgUrl: string}>}) {

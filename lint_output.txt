@@ -1,0 +1,41 @@
+
+> zyphra@0.1.0 lint
+> eslint
+
+
+C:\Users\DITS-USER\Desktop\DevProjects\zyphra\app\about\page.tsx
+  27:163  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  49:101  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  49:123  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  56:67   error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\DITS-USER\Desktop\DevProjects\zyphra\app\contact\page.tsx
+  36:56  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\DITS-USER\Desktop\DevProjects\zyphra\app\support\page.tsx
+  38:27  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  62:28  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+  62:50  error  `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`  react/no-unescaped-entities
+
+C:\Users\DITS-USER\Desktop\DevProjects\zyphra\context\CartContext.tsx
+  15:24  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            @typescript-eslint/no-explicit-any
+  32:9   error  Error: Calling setState synchronously within an effect can trigger cascading renders
+
+Effects are intended to synchronize state between React and external systems such as manually updating the DOM, state management libraries, or other platform APIs. In general, the body of an effect should do one or both of the following:
+* Update external systems with the latest state from React.
+* Subscribe for updates from some external system, calling setState in a callback function when external state changes.
+
+Calling setState synchronously within an effect body causes cascading renders that can hurt performance, and is not recommended. (https://react.dev/learn/you-might-not-need-an-effect).
+
+C:\Users\DITS-USER\Desktop\DevProjects\zyphra\context\CartContext.tsx:32:9
+  30 |     if (savedCart) {
+  31 |       try {
+> 32 |         setCart(JSON.parse(savedCart));
+     |         ^^^^^^^ Avoid calling setState() directly within an effect
+  33 |       } catch (error) {
+  34 |         console.error("Failed to parse cart from localStorage", error);
+  35 |       }  react-hooks/set-state-in-effect
+  44:31  error  Unexpected any. Specify a different type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            @typescript-eslint/no-explicit-any
+
+✖ 11 problems (11 errors, 0 warnings)
+

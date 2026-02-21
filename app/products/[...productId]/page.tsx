@@ -2,40 +2,48 @@
 
 import Image from "next/image";
 import { useState } from "react";
+import products from "../../../public/products.json";
+import { useParams } from "next/navigation";
+import { useCart } from "@/context/CartContext";
 
 export default function ProductDetails() {
+  const { addToCart } = useCart();
   const [selectedImage, setSelectedImage] = useState(0);
+  const params = useParams();
+  const productId = Array.isArray(params.productId) ? params.productId[0] : params.productId;
+  const product = products.find(p => p.id === parseInt(productId as string));
 
-  const images = [
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuBjoElrN18DwfhtPte6rhCLo92e1zHOHQOAsDnjj--BsEsCVU7OzITDwoglpVPWXTBsuiQ1DwBeTt_n-dw3moqkprwY-pZSrsbWR_8YQu-Kif8zcHRkhTpU6HeBelHhENxlp2B7da5rtFXm00FBLU5biOxlI1C7CGyyFo8s2XLxC-OFUyYSX90bugAIg8Mj3yv9Qsvpy0WMtIopydJy1Ok4J57C7-edOEbgZCCqe7oqZqAJqoENjDJupDbrovT_e7NzdLtp5JiKUcI",
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuCmoeanpGo1454p9AxIoCF8Sv7n-JlC-6zJG7J_XxcCy8sTXIli-9uUGWyne7GfImnbQk9QC3hjNjRwfP4sf2x2eWZ1mfu3S5uff49bbarucnb3aqRPcMpovs1EWUreT64w7zBSyOHNHpi4GyV8yFAiN4DpCibp0wM5Ho8woj04auGYiNS2C_igc_e_2icLgafm6fCyBrgryBDq2zuNRFTfVGJ3ZZLwbzGfMGVu8rVz9ZemS036qv46UV97xTkXzgJn6DXFo4wz3Yc",
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuAemWimcRMvw3OLSljxWFDDgZCKBVfMbB22FN4pzk0AVEpB6WF7DtzEFaeeDCxORxBnUbKKZHA3rccoudpwuqbVnUKR8A4JMAuW2zZkM_NzkqW6ENpS1p1T480y6B5z0P2ybOJB7N6YIzzBSKGNqcr97XyIzeodGhfggLmB1K7-nHEmPcnNWggo3r7t1OGNkn7RU870ZwPNzKlkhD8OG8H8Mt_xFGKALK6DxH9SqgnyyRh9UCj77OHozR-KjP_xoNIQU7DQlLxh7Rw",
-  ];
+  if (!product) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <h1 className="text-2xl font-bold">Product not found</h1>
+      </div>
+    );
+  }
+
+  const specifications = Object.entries(product.specification || {});
 
   return (
     <section className="max-w-7xl mx-auto px-4 py-12">
       <div className="grid lg:grid-cols-2 gap-12">
-
         {/* Left - Images */}
         <div className="space-y-4">
           <div className="relative aspect-square rounded-2xl overflow-hidden bg-base-200">
             <Image
-              src={images[selectedImage]}
-              alt="Elite Audio Pro"
+              src={product.imgUrls[selectedImage] || product.imgUrls[0]}
+              alt={product.name}
               fill
               className="object-cover"
             />
           </div>
 
           <div className="flex gap-4">
-            {images.map((img, index) => (
+            {product.imgUrls.map((img, index) => (
               <button
                 key={index}
                 onClick={() => setSelectedImage(index)}
                 className={`relative w-20 h-20 rounded-xl overflow-hidden border-2 ${
-                  selectedImage === index
-                    ? "border-primary"
-                    : "border-base-300"
+                  selectedImage === index ? "border-primary" : "border-base-300"
                 }`}
               >
                 <Image
@@ -49,21 +57,15 @@ export default function ProductDetails() {
           </div>
         </div>
 
-        {/* Right - Info */}
         <div className="flex flex-col justify-between">
-
           <div>
             <div className="badge badge-primary badge-outline mb-4">
               Best Seller
             </div>
 
-            <h1 className="text-4xl font-black mb-2">
-              Elite Audio Pro
-            </h1>
+            <h1 className="text-4xl font-black mb-2">{product.name}</h1>
 
-            <p className="text-base-content/70 mb-6">
-              Professional Grade Active Noise-Canceling Wireless Headphones
-            </p>
+            <p className="text-base-content/70 mb-6">{product.subtitle}</p>
 
             <div className="flex items-center gap-2 mb-6">
               <div className="rating rating-sm">
@@ -71,7 +73,11 @@ export default function ProductDetails() {
                 <input type="radio" className="mask mask-star bg-primary" />
                 <input type="radio" className="mask mask-star bg-primary" />
                 <input type="radio" className="mask mask-star bg-primary" />
-                <input type="radio" className="mask mask-star bg-primary" defaultChecked />
+                <input
+                  type="radio"
+                  className="mask mask-star bg-primary"
+                  defaultChecked
+                />
               </div>
               <span className="font-bold">4.9</span>
               <span className="text-sm text-base-content/60">
@@ -79,95 +85,98 @@ export default function ProductDetails() {
               </span>
             </div>
 
-            <div className="text-3xl font-black mb-6">
-              $349.00
-            </div>
+            <div className="text-3xl font-black mb-6">${product.price}</div>
 
-            {/* Color */}
+            {/* Description Summary */}
             <div className="mb-6">
-              <p className="font-semibold mb-2">Color</p>
-              <div className="flex gap-3">
-                <button className="w-8 h-8 rounded-full bg-black border-2 border-primary"></button>
-                <button className="w-8 h-8 rounded-full bg-yellow-400"></button>
-                <button className="w-8 h-8 rounded-full bg-gray-400"></button>
-              </div>
-            </div>
-
-            {/* Fit */}
-            <div className="mb-8">
-              <p className="font-semibold mb-2">Ear Cushion Fit</p>
-              <div className="flex gap-4">
-                <button className="btn btn-outline btn-primary">
-                  Standard Leather
-                </button>
-                <button className="btn btn-outline">
-                  Velour Comfort
-                </button>
-              </div>
+              <p className="text-base-content/70">{product.description}</p>
             </div>
           </div>
 
           {/* Actions */}
           <div className="flex flex-col sm:flex-row gap-4">
-            <button className="btn btn-primary flex-1">
-              Add to Cart
-            </button>
-            <button className="btn btn-outline flex-1">
-              Buy Now
-            </button>
+            <button onClick={() => addToCart(product)} className="btn btn-primary flex-1">Add to Cart</button>
+            <button className="btn btn-outline flex-1">Buy Now</button>
           </div>
-
         </div>
       </div>
 
       {/* Tabs */}
       <div className="mt-20">
         <div role="tablist" className="tabs tabs-bordered">
-          <a role="tab" className="tab tab-active">
-            Description
-          </a>
-          <a role="tab" className="tab">
-            Specifications
-          </a>
-          <a role="tab" className="tab">
-            Reviews (1,240)
-          </a>
-        </div>
-
-        <div className="mt-8 grid md:grid-cols-2 gap-12">
-          <div>
-            <h3 className="text-2xl font-bold mb-4">
-              Studio Sound, Anywhere.
-            </h3>
-
-            <p className="mb-4 text-base-content/70">
-              Engineered for the discerning audiophile, featuring 50mm
-              beryllium-coated drivers with Adaptive Noise Cancellation.
-            </p>
-
-            <ul className="space-y-3">
-              <li className="flex items-center gap-2">
-                <span className="text-primary">✔</span>
-                Hybrid ANC up to 45dB
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-primary">✔</span>
-                LDAC & aptX HD Support
-              </li>
-              <li className="flex items-center gap-2">
-                <span className="text-primary">✔</span>
-                40-Hour Battery Life
-              </li>
-            </ul>
+          <input
+            type="radio"
+            name="product_tabs"
+            role="tab"
+            className="tab"
+            aria-label="Description"
+            defaultChecked
+          />
+          <div role="tabpanel" className="tab-content py-10">
+            <div className="grid md:grid-cols-2 gap-12">
+              <div>
+                <h3 className="text-2xl font-bold mb-4">{product.name}</h3>
+                <p className="mb-4 text-base-content/70">
+                  {product.description}
+                </p>
+                <ul className="space-y-3">
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">✔</span> High Quality Design
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">✔</span> Premium Performance
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">✔</span> 1 Year Warranty
+                  </li>
+                </ul>
+              </div>
+              <div className="relative aspect-video rounded-2xl overflow-hidden bg-base-200">
+                <Image
+                  src={product.imgUrls[0]}
+                  alt="Product context"
+                  fill
+                  className="object-cover"
+                />
+              </div>
+            </div>
           </div>
 
-          <div className="relative aspect-square rounded-2xl overflow-hidden">
-            <Image
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuB_X2kRMpMlmDo8zufPNcqutbU5pOUi20ttG6upJT_QDtAyGWGr4GpVF9WzxfgXsteB8qjrm05Y5_6AyyRL3zS1p5GDJdzXrjZ5ZzWLw7ccVriqyywqzboT6GV0F3DMWc3xZOIG-L0grExaiEh5m4DhWLej2afZhMWmYBwGDRDtnNXXwLhNMJVEeV_SIwdPBYInaPZ-yl41-gZ3NuQ0Sjek9aOqKy2vTiblp2qU1XdCbOphHmJBMTKXSUJdadrIjuo8M-x7nBx00xg"
-              alt="Studio usage"
-              fill
-              className="object-cover"
-            />
+          <input
+            type="radio"
+            name="product_tabs"
+            role="tab"
+            className="tab"
+            aria-label="Specifications"
+          />
+          <div role="tabpanel" className="tab-content py-10">
+            <div className="overflow-x-auto">
+              <table className="table w-full">
+                <tbody>
+                  {specifications.map(([key, value]) => (
+                    <tr key={key}>
+                      <td className="font-bold capitalize">
+                        {key.replace(/([A-Z])/g, " $1").trim()}
+                      </td>
+                      <td>{value as string}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <input
+            type="radio"
+            name="product_tabs"
+            role="tab"
+            className="tab"
+            aria-label="Reviews (1,240)"
+          />
+          <div role="tabpanel" className="tab-content py-10">
+            <p className="text-center text-base-content/60 italic">
+              Reviews coming soon...
+            </p>
           </div>
         </div>
       </div>
