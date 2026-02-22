@@ -64,7 +64,7 @@ export default function Hero({slides}: {slides: Array<{id: number, url: string, 
   }, [emblaApi, onSelect])
 
   return (
-    <section className="max-w-4xl mx-auto mb-6 md:mb-10">
+    <section className="max-w-4xl mx-auto">
       <div className="overflow-hidden" ref={emblaRef}>
         <div className="flex">
           {slides.map((slide) => (
