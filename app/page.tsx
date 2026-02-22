@@ -7,7 +7,7 @@ import data from "../public/data.json";
 export default function Home() {
   return (
     <>
-      <main className="flex-1 flex flex-col overflow-x-hidden py-8 px-6 lg:px-10 gap-5 md:gap-10">
+      <main className="flex-1 flex flex-col overflow-x-hidden gap-3 md:gap-10">
         <Hero slides={data} />
         <CategorySection />
         <LatestSection />

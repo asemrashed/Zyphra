@@ -12,7 +12,7 @@ const categories = [
 
 export default function CategorySection() {
   return (
-    <section className="mb-6 md:mb-10">
+    <section className="mb-6 md:mb-10 mx-5 md:mx-10">
       <h3 className="text-2xl lg:text-3xl font-bold text-primary">
           Featured Categories
         </h3>

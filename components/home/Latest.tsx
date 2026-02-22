@@ -5,7 +5,7 @@ const latest = products.slice(0, 6);
 
 export default function LatestSection() {
   return (
-    <section className="mb-6 md:mb-10">
+    <section className="mb-6 md:mb-10 mx-5 md:mx-10">
       <div className="flex items-center justify-between mb-8 ">
         <h3 className="text-2xl lg:text-3xl font-bold text-primary">
           Latest Product

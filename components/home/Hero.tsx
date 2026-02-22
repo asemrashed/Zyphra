@@ -70,14 +70,14 @@ export default function Hero({slides}: {slides: Array<{id: number, url: string, 
           {slides.map((slide) => (
             <div
               key={slide.id}
-              className="flex-[0_0_100%] min-w-0 px-4"
+              className="flex-[0_0_100%] min-w-0"
             >
-              <div className={`h-50 md:h-100 rounded-xl flex items-center font-bold relative overflow-hidden`}>
-                <Image src={slide.imgUrl} alt={slide.slogan} width={1200} height={600} className="object-cover rounded-xl" />
+              <div className={`h-50 md:h-100 sm:rounded-lg lg:rounded-xl flex items-center font-bold relative overflow-hidden`}>
+                <Image src={slide.imgUrl} alt={slide.slogan} width={1200} height={600} className="object-cover md:rounded-xl" />
                 <div className="absolute w-1/2 ml-3 p-4">
                   <div className="flex flex-col gap-3 h-full items-start justify-center">
-                    <h1 className="text-primary text-xl md:text-4xl">{slide.slogan}</h1>
-                    <button className='btn btn-sm btn-primary'>Explore</button>
+                    <h1 className="text-primary text-base md:text-4xl">{slide.slogan}</h1>
+                    <button className='btn btn-xs md:btn-sm btn-primary'>Explore</button>
                   </div>
                 </div>
               </div>
@@ -86,7 +86,7 @@ export default function Hero({slides}: {slides: Array<{id: number, url: string, 
         </div>
       </div>
 
-      <div className="flex items-center justify-between gap-4 mt-6 mx-3">
+      <div className="flex items-center justify-between gap-4 mt-2 md:mt-6 mx-3">
         <div className="flex gap-4">
           <button
             onClick={onPrev}
