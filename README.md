@@ -17,9 +17,11 @@ It delivers a smooth user experience with scalable architecture and modern front
 
 ## ✨ Features
 
-⚡ Fast and optimized performance
+⚡ Smooth & Modern Shopping Experience
 
-📱 Fully responsive design
+📱 Browse Products with Clear Pricing
+
+🛒 Add items to cart and checkout
 
 🎨 Clean and modern UI
 
@@ -28,33 +30,42 @@ It delivers a smooth user experience with scalable architecture and modern front
 🚀 Deployed with Vercel
 
 ## 🛠️ Tech Stack
-<p align="left"> <a href="https://nextjs.org/" target="_blank"> <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" /> </a> <a href="https://react.dev/" target="_blank"> <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" /> </a> <a href="https://tailwindcss.com/" target="_blank"> <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" /> </a> <a href="https://vercel.com/" target="_blank"> <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" /> </a> <a href="https://nodejs.org/" target="_blank"> <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" /> </a> </p>
+<p align="left"> <a href="https://nextjs.org/" target="_blank"> <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" /> </a> <a href="https://www.typescriptlang.org/" target="_blank"> <img src="https://img.shields.io/badge/TypeScript-000000?style=for-the-badge&logo=typescript&logoColor=white" /> </a> <a href="https://react.dev/" target="_blank"> <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" /> </a> <a href="https://tailwindcss.com/" target="_blank"> <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" /> </a> <a href="https://vercel.com/" target="_blank"> <img src="https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white" /> </p>
 
 ---
 
 ## 📂 Project Structure
+```bash
+## 📂 Project Structure
 Zyphra/
 │
 ├── public/
-│   └── zyphraSS.png
 │
 ├── app/
+│   ├── layout.tsx
+│   ├── page.tsx                ← Home page
 │   ├── products/
 │   ├── about/
-│   ├── api/
 │   ├── support/
-│   └── contact/
-│
-├── context/
-│   └── CartContext.tsx
+│   ├── contact/
+│   └── api/
 │
 ├── components/
 │   ├── home/
 │   ├── cards/
 │   └── layout/
+│       ├── Navbar.tsx
+│       ├── Sidebar.tsx
+│       └── Footer.tsx
+│
+├── context/
 │
 ├── package.json
+├── tsconfig.json
+├── next.config.js
+├── .gitignore
 └── README.md
+```
 
 ---
 
