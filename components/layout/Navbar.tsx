@@ -22,7 +22,7 @@ const Navbar = () => {
                 <div className="container mx-auto px-6">
                     <div className="flex items-center justify-between py-3 gap-4">
                         <Link href="/" className="flex items-center gap-3">
-                            <Image src={'/logo.png'} alt="Zyphra Logo" width={40} height={40} className="object-contain rounded-full" />
+                            <Image src={'/logoo.png'} alt="Zyphra Logo" width={40} height={40} className="object-contain rounded-full" />
                             <h1 className="font-logo text-2xl font-bold text-primary">Zyphra</h1>
                         </Link>
 
@@ -98,14 +98,14 @@ const Navbar = () => {
                                             <Link href={link.path}>{link.name}</Link>
                                         </li>
                                      ))}
-                                     <li><Link href="/login">Sign In</Link></li>
-                                     <li><Link href="/register">Sign Up</Link></li>
+                                     <li><Link href="/auth/signin">Sign In</Link></li>
+                                     <li><Link href="/auth/signup">Sign Up</Link></li>
                                 </ul>
                             </div>
                             
                             <div className="hidden md:flex items-center gap-2">
-                                <Link href={'/login'} className="btn btn-sm btn-ghost hover:btn-primary font-semibold">Sign In</Link>
-                                <Link href={'/register'} className="btn btn-sm btn-primary hover:btn-primary/60 font-semibold shadow-sm border-none">Sign Up</Link>
+                                <Link href={'/auth/signin'} className="btn btn-sm btn-ghost hover:btn-primary font-semibold">Sign In</Link>
+                                <Link href={'/auth/signup'} className="btn btn-sm btn-primary hover:btn-primary/60 font-semibold shadow-sm border-none">Sign Up</Link>
                             </div>
                         </div>
                     </div>

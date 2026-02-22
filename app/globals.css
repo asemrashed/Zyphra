@@ -12,19 +12,17 @@
   --color-background-light: #f8f8f5;
   --color-background-dark: #0a0a0a;
 
+  --font-ubuntu: "Ubuntu", sans-serif;
   --font-display: "Inter", sans-serif;
 
   --radius: 0.25rem;
   --radius-lg: 0.5rem;
   --radius-xl: 0.75rem;
 }
-/* [data-theme="mydark"] {
-  --color-primary: #7d79fd;
-  --color-secondary: #c084fc;
-  --color-accent: #4ade80;
-  --color-netral: #111827;
-  --color-base-100: #212121;
-} */
+
+h1,h2,h3,h4,h5,h6 {
+  font-family: var(--font-ubuntu);
+}
 
 body {
   font-family: var(--font-display);

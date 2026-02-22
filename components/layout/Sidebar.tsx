@@ -1,17 +1,17 @@
 export default function Sidebar() {
   return (
-    <aside className="hidden w-64 shrink-0 border-r border-white/5 py-8 pl-6 pr-4 lg:block">
+    <aside className="hidden sticky top-25 w-64 shrink-0 border-r border-white/5 py-8 pl-6 pr-4 lg:block">
       <nav className="space-y-8">
         <div>
           <h3 className="mb-4 text-xs font-bold uppercase tracking-widest text-slate-500">
-            Categories
+            Find more
           </h3>
           <ul className="space-y-3 text-slate-300 text-sm">
-            <li className="hover:text-primary cursor-pointer">Electronics</li>
+            <li className="hover:text-primary cursor-pointer">Offers</li>
             <li className="hover:text-primary cursor-pointer">Apparel</li>
             <li className="hover:text-primary cursor-pointer">Luxury Goods</li>
             <li className="hover:text-primary cursor-pointer">Home Tech</li>
-            <li className="text-primary font-bold">New Arrivals</li>
+            <li className="hover:text-primary cursor-pointer">New Arrivals</li>
           </ul>
         </div>
 

@@ -77,7 +77,7 @@ export default function Hero({slides}: {slides: Array<{id: number, url: string, 
                 <div className="absolute w-1/2 ml-3 p-4">
                   <div className="flex flex-col gap-3 h-full items-start justify-center">
                     <h1 className="text-primary text-xl md:text-4xl">{slide.slogan}</h1>
-                    <button className='btn btn-sm md:btn-md btn-primary'>Explore</button>
+                    <button className='btn btn-sm btn-primary'>Explore</button>
                   </div>
                 </div>
               </div>
